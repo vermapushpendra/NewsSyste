@@ -5,3 +5,11 @@
 body {
   background-color: #121212;
 }
+
+.btn-primary {
+  @apply rounded-full bg-gray-600 p-2.5 hover:bg-gray-700;
+}
+
+.btn-secondary {
+  @apply rounded-full p-2.5 hover:bg-gray-600;
+}

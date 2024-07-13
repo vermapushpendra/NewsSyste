@@ -1,6 +1,6 @@
-import Header from "./components/Header/Header";
+import Header from "./Layout/Header/Header";
 import { Outlet } from "react-router-dom";
-import Sidebar from "./components/Sidebar/Sidebar";
+import Sidebar from "./Layout/Sidebar/Sidebar";
 import { useState } from "react";
 
 function Layout() {
@@ -17,7 +17,7 @@ function Layout() {
       <Sidebar isSidebarCollapsed={isSidebar} />
 
       <main className="flex-grow">
-        <div className={`flex-1 p-4 ml-${isSidebar ? "24" : "64"} `}>
+        <div className={`flex-1 p-4 ${isSidebar ? "ml-24" : "ml-64"} `}>
 
           <Outlet />
 
