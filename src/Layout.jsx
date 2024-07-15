@@ -16,12 +16,10 @@ function Layout() {
       <Header toggleSidebar={toggleSidebar} />
       <Sidebar isSidebarCollapsed={isSidebar} />
 
-      <main className="flex-grow">
-        <div className={`flex-1 p-4 ${isSidebar ? "ml-24" : "ml-64"} `}>
+      <main className="">
 
-          <Outlet />
+        <Outlet />
 
-        </div>
       </main>
     </div>
   );
