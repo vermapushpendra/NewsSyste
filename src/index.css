@@ -7,9 +7,29 @@ body {
 }
 
 .btn-primary {
-  @apply rounded-full bg-gray-600 p-2.5 hover:bg-gray-700;
+  @apply rounded-full bg-gray-600 p-2.5 hover:bg-gray-500;
+}
+
+.color-primary {
+  @apply bg-gray-600 hover:bg-gray-500;
 }
 
 .btn-secondary {
   @apply rounded-full p-2.5 hover:bg-gray-600;
+}
+
+* ::-webkit-scrollbar {
+  @apply w-2 bg-transparent;
+}
+
+* ::-webkit-scrollbar-thumb {
+  @apply rounded-full bg-gray-600;
+}
+
+.scrollbar-hidden::-webkit-scrollbar-thumb {
+  @apply bg-transparent;
+}
+
+.scrollbar-hidden:hover::-webkit-scrollbar-thumb {
+  @apply bg-gray-600;
 }

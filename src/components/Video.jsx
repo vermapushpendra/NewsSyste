@@ -1,12 +1,12 @@
 
 import { createRef, useEffect, useRef, useState } from 'react';
-import { FormatPostTime, } from '../../utility/FormatPostTime.jsx';
-import { videos } from './../../Data/home.js';
+import { FormatPostTime, } from '../utility/FormatPostTime.jsx';
+import { videos } from '../Data/home.js';
 
 const View_Formatter = new Intl.NumberFormat(undefined, { notation: "compact" })
 
 
-function Home() {
+function Video() {
 
     const [isVideoIdx, setIsVideoIdx] = useState(null);
 
@@ -17,17 +17,14 @@ function Home() {
     useEffect(() => {
         if (isVideoIdx !== null) {
             videoRefs.current[isVideoIdx].current.currentTime = 0;
-            console.log(videoRefs.current[isVideoIdx].current);
             videoRefs.current[isVideoIdx].current.play();
         }
 
         if (prevVideoRef.current !== null) {
-            console.log("inside preref", prevVideoRef.current)
             prevVideoRef.current.current.pause()
         }
 
         prevVideoRef.current = (isVideoIdx !== null) ? videoRefs.current[isVideoIdx] : null;
-        console.log("after update", prevVideoRef.current)
 
     }, [isVideoIdx])
 
@@ -35,13 +32,13 @@ function Home() {
     return <>
 
         {videos.map((video, i) => (
-            <div key={video.id} className="flex flex-col gap-3" onMouseEnter={() => setIsVideoIdx(i)} onMouseLeave={() => setIsVideoIdx(null)} >
+            <div key={video.id} className="flex flex-col gap-2" onMouseEnter={() => setIsVideoIdx(i)} onMouseLeave={() => setIsVideoIdx(null)} >
                 <a href={`/watch?v=${video.id}`} className='relative aspect-video'>
-                    <img src={video.thumbnailUrl} className='block object-cover rounded-xl' />
+                    <img src={video.thumbnailUrl} className='block object-cover w-full h-full rounded-xl' />
                     <div className='absolute text-white bg-black bg-opacity-90 rounded-md px-2 right-2 bottom-2'>
                         {video.duration}
                     </div>
-                    <video ref={videoRefs.current[i]} src={video.videoUrl} muted playsInline className={`block object-cover absolute inset-0 transition-opacity duration-200 opacity-100`} />
+                    <video ref={videoRefs.current[i]} src={video.videoUrl} muted playsInline className={`block object-cover absolute inset-0 transition-opacity duration-200 ${isVideoIdx == i ? "opacity-100 delay-100" : "opacity-0"}`} />
                 </a>
 
                 <div className='flex gap-2'>
@@ -69,4 +66,4 @@ function Home() {
     </>;
 }
 
-export default Home;
+export default Video;

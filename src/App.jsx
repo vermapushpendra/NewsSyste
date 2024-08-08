@@ -1,13 +1,20 @@
+import { useState } from "react";
 import "./App.css";
-import Video from "./components/Video/Video";
-import Header from "./Layout/Header/Header";
-import Sidebar from "./Layout/Sidebar/Sidebar";
+import Video from "./components/Video";
+import Header from "./layouts/Header";
+import Sidebar from "./layouts/Sidebar";
+
+import { SidebarContext } from "./contexts/SidebarConext";
 
 
 function App() {
 
+  const [isOpen, setIsOpen] = useState(true)
+
+
   return (
-    <>
+    <SidebarContext.Provider value={{ isOpen, setIsOpen }}>
+
       <div className="max-h-screen flex flex-col">
         <Header />
 
@@ -15,7 +22,7 @@ function App() {
           <Sidebar />
 
           <div className="overflow-x-hidden px-8 pb-4 mt-8">
-            <div className="grid gap-4 grid-cols-[repeat(auto-fill,minmax(300px,1fr))]">
+            <div className="grid gap-5 grid-cols-[repeat(auto-fill,minmax(300px,1fr))]">
               <Video />
             </div>
 
@@ -25,7 +32,7 @@ function App() {
         </div>
       </div>
 
-    </>
+    </SidebarContext.Provider>
   );
 }
 
