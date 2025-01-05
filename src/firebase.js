@@ -1,11 +1,10 @@
 
 
-// src/firebase.js
 import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth'; // For Authentication
-import { getFirestore } from 'firebase/firestore'; // For Firestore
+import { getAuth } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
 
-// Your Firebase configuration
+//configuration
 const firebaseConfig = {
     apiKey: "AIzaSyB5HyYCRQcTGl3whc8i98DYU5Uy7MthTyo",
     authDomain: "newsapp8484.firebaseapp.com",
@@ -16,13 +15,11 @@ const firebaseConfig = {
     measurementId: "G-SDQ9XYSZHW"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Initialize Firebase services
-const auth = getAuth(app);  // Firebase Authentication
-const db = getFirestore(app);  // Firestore
+const auth = getAuth(app);
+const db = getFirestore(app);
 
-// Exporting the services
-export { app, auth, db };  // Now exporting the app object correctly
+// Export
+export { app, auth, db };
 

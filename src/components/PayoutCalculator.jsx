@@ -1,8 +1,7 @@
-// src/components/PayoutCalculator.jsx
 import React, { useState } from 'react';
 
 function PayoutCalculator() {
-  const [ratePerArticle, setRatePerArticle] = useState(10); // Default rate per article
+  const [ratePerArticle, setRatePerArticle] = useState(10);
   const [articleCount, setArticleCount] = useState(0);
   const [totalPayout, setTotalPayout] = useState(0);
 

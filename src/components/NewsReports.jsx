@@ -15,7 +15,7 @@ function NewsReports() {
             .then((response) => response.json())
             .then((data) => {
                 if (data && data.articles) {
-                    console.log("Fetched articles:", data.articles); // Log the data to inspect its structure
+                    console.log("Fetched articles:", data.articles);
                     setNews(data.articles);
                     setFilteredNews(data.articles);
                 } else {
@@ -32,7 +32,7 @@ function NewsReports() {
     useEffect(() => {
         setFilteredNews(
             news.filter((article) =>
-                article?.title?.toLowerCase().includes(searchTerm.toLowerCase()) // Ensure valid article before filtering
+                article?.title?.toLowerCase().includes(searchTerm.toLowerCase())
             )
         );
     }, [searchTerm, news]);
@@ -41,7 +41,7 @@ function NewsReports() {
         <div className="p-4 sm:p-6 md:p-8">
             <h2 className="text-2xl sm:text-3xl font-bold mb-4">News Reports</h2>
 
-            {/* Search Section */}
+
             <div className="my-4">
                 <input
                     type="text"
@@ -63,8 +63,8 @@ function NewsReports() {
                     {filteredNews.length > 0 ? (
                         filteredNews.map((article, index) => {
                             if (!article || !article.title || !article.description || !article.url) {
-                                console.error("Invalid article data:", article);  // Debug invalid article
-                                return null;  // Return null for invalid articles
+                                console.error("Invalid article data:", article);
+                                return null;
                             }
                             return <NewsCard key={index} article={article} />;
                         })

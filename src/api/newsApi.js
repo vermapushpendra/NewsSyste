@@ -8,7 +8,7 @@ const fetchNews = async () => {
         const response = await axios.get(`https://newsapi.org/v2/top-headlines`, {
             params: {
                 apiKey: API_KEY,
-                country: 'us', // Example: You can change the country or add other filters like category, etc.
+                country: 'us', 
             },
         });
         return response.data.articles; // Return the list of articles
