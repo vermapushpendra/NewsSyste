@@ -1,38 +1,34 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import App from './App.jsx'
+import './index.css'
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 import Layout from './Layout.jsx'
-import Home from './components/Home.jsx'
+import NewsCard from './components/NewsCard.jsx'
+import Dashboard from './components/Dashboard.jsx'
+import NewsReport from './components/NewsReports.jsx'
+import PayoutCalculator from './components/PayoutCalculator.jsx'
 
-import './index.css';
-import History from './components/History.jsx'
-import Subscription from './components/Subscription.jsx'
 
 
-const router = createBrowserRouter([
-    {
-        path: '/',
-        element: <Layout />,
 
-        children: [
-            {
-                path: '/',
-                element: <Home />,
-            },
-            {
-                path: 'History',
-                element: <History />,
-            },
-            {
-                path: 'Subscription',
-                element: <Subscription />,
-            },
-        ]
-    }
-])
+const router = createBrowserRouter(
+    createRoutesFromElements(
+        <Route path='/' element={<Layout />}>
+            <Route path='' element={<NewsCard />} />
+            <Route path='dashboard' element={<Dashboard />} />
+            <Route path='newsreport' element={<NewsReport />} />
+            <Route path='payoutcalculator' element={<PayoutCalculator />} />
+
+
+        </Route>
+    )
+)
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
         <RouterProvider router={router} />
     </React.StrictMode>,
 )
+
+
